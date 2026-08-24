@@ -1,0 +1,76 @@
+@model FutureValueModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Future Value Calculator</title>
+    <style>
+        /* Figure 2-14 CSS style rules */
+        body {
+            padding: 1em;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            font-size: 180%;
+            padding-bottom: .5em;
+            border-bottom: 1px solid #000;
+            margin-bottom: .8em;
+        }
+
+        label {
+            float: left;
+            width: 10em;
+            text-align: right;
+            margin-bottom: .5em;
+        }
+
+        input {
+            margin-left: 1em;
+            margin-bottom: .5em;
+        }
+
+        button {
+            margin-left: 11.1em;
+            margin-right: .5em;
+        }
+
+        a {
+            margin-left: .5em;
+        }
+
+        div {
+            margin-bottom: .2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Future Value Calculator</h1>
+
+    <form asp-action="Index" method="post">
+        <div>
+            <label asp-for="MonthlyInvestment">Monthly Investment:</label>
+            <input asp-for="MonthlyInvestment" />
+        </div>
+        <div>
+            <label asp-for="YearlyInterestRate">Yearly Interest Rate:</label>
+            <input asp-for="YearlyInterestRate" />
+        </div>
+        <div>
+            <label asp-for="Years">Number of Years:</label>
+            <input asp-for="Years" />
+        </div>
+        <div>
+            <label>Future Value:</label>
+            <input value="@ViewBag.FV.ToString("C2")" readonly />
+        </div>
+        <div>
+            <button type="submit">Calculate</button>
+            <a asp-action="Index">Clear</a>
+        </div>
+    </form>
+</body>
+</html>
